@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
@@ -110,7 +111,7 @@ namespace Importar_Impuestos.Servicios
                 if (ex != null && string.IsNullOrEmpty(ex.Message) && ex.Message.Contains("was not in a correct format"))
                     throw new Exception("Imposible utilizar archivo Excel: No fue posible realizar la lectura de la hoja catálogo debido a inconsistencias de formato, favor de revisar que las columnas tengan los formatos correctos.");
                 else
-                    throw new Exception(string.Format("Imposible utilizar archivo excel: No fue posible realizar la lectura de la hoja catálogo debido a {0}", ex.Message));
+                    throw new Exception(string.Format("Imposible utilizar archivo excel: No fue posible realizar la lectura de la hoja impuestos debido a {0}", ex.Message));
             }
             //return OnMapDtoEntidad(conjuntoCatalogo, idNegocio, idSucursal);
             return conjuntoCatalogo;
@@ -129,16 +130,16 @@ namespace Importar_Impuestos.Servicios
                         cargaCatalogo.Fecha = DateTime.FromOADate(Int32.Parse(valor)).ToString("dd/MM/yyyy");
                         break;
                     case "Mes":
-                        cargaCatalogo.Mes = valor.Replace("\t", string.Empty);
+                        cargaCatalogo.Mes = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
                         break;
                     case "Año":
-                        cargaCatalogo.Año = valor.Replace("\t", string.Empty);
+                        cargaCatalogo.Año = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
                         break;
                     case "IVA":
-                        cargaCatalogo.IVA = valor.Replace("\t", string.Empty);
+                        cargaCatalogo.IVA = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
                         break;
                     case "ISR":
-                        cargaCatalogo.ISR = valor.Replace("\t", string.Empty);
+                        cargaCatalogo.ISR = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
                         break;
                     default:
                         break;
@@ -274,7 +275,7 @@ namespace Importar_Impuestos.Servicios
                 for (uint i = 0; i < NombreHeaders.Length; i++)
                     tableColumns1.Append(new TableColumn() { Id = i + 1, Name = NombreHeaders[i] });
 
-                TableStyleInfo tsi = new TableStyleInfo() { Name = "TableStyleLight9", ShowColumnStripes = BooleanValue.FromBoolean(false), ShowRowStripes = BooleanValue.FromBoolean(true), ShowFirstColumn = BooleanValue.FromBoolean(false), ShowLastColumn = BooleanValue.FromBoolean(false) };
+                TableStyleInfo tsi = new TableStyleInfo() { Name = "None"/*"TableStyleLight9"*/, ShowColumnStripes = BooleanValue.FromBoolean(false), ShowRowStripes = BooleanValue.FromBoolean(true), ShowFirstColumn = BooleanValue.FromBoolean(false), ShowLastColumn = BooleanValue.FromBoolean(false) };
                 table1.Append(tableColumns1);
                 table1.Append(tsi);
 

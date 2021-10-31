@@ -135,7 +135,7 @@ namespace Importar_Impuestos.App
                         cargaCatalogo.Año = valor.Replace("\t", string.Empty); 
                         break;
                     case "IVA":
-                        cargaCatalogo.IVA = valor.Replace("\t", string.Empty); 
+                        cargaCatalogo.IVA = valor.Replace(@"[^\w\s.!@$%^&*()\-\/]+", string.Empty); 
                         break;
                     case "ISR":
                         cargaCatalogo.ISR = valor.Replace("\t", string.Empty); 
