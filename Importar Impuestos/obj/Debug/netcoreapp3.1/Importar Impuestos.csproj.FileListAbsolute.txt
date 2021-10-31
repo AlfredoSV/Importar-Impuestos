@@ -1,0 +1,23 @@
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.csproj.AssemblyReference.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.AssemblyInfoInputs.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.AssemblyInfo.cs
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.csproj.CoreCompileInputs.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.exe
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.deps.json
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.runtimeconfig.json
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.runtimeconfig.dev.json
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Importar Impuestos.pdb
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\staticwebassets\Importar Impuestos.StaticWebAssets.Manifest.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\staticwebassets\Importar Impuestos.StaticWebAssets.xml
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\scopedcss\bundle\Importar Impuestos.styles.css
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.RazorTargetAssemblyInfo.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.pdb
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.genruntimeconfig.cache
