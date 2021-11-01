@@ -10,19 +10,19 @@ namespace Importar_Impuestos.App
         public string RFC { get; set; }
         public string Fecha { get; set; }
         public string Mes { get; set; }
-        public string Año { get; set; }
+        public string Anio { get; set; }
         public string Iva { get; set; }
         public string Isr { get; set; }
         public bool seImporto { get; set; }
         public string Estatus { get; set; }
        
 
-        public DtoRespuestaImpuestos(string rFC, string fecha, string mes, string año, string iva, string isr, bool seImporto, string estatus)
+        public DtoRespuestaImpuestos(string rfc, string fecha, string mes, string anio, string iva, string isr, bool seImporto, string estatus)
         {
-            RFC = rFC;
+            RFC = rfc;
             Fecha = fecha;
             Mes = mes;
-            Año = año;
+            Anio = anio;
             Iva = iva;
             Isr = isr;
             this.seImporto = seImporto;
@@ -30,9 +30,9 @@ namespace Importar_Impuestos.App
             
         }
 
-        public static DtoRespuestaImpuestos Create(string rFC, string fecha, string mes, string año, string iva, string isr, bool seImporto, string estatus)
+        public static DtoRespuestaImpuestos Create(string rfc, string fecha, string mes, string anio, string iva, string isr, bool seImporto, string estatus)
         {
-            return new DtoRespuestaImpuestos( rFC,  fecha,  mes,  año,  iva,  isr,  seImporto,  estatus);
+            return new DtoRespuestaImpuestos( rfc,  fecha,  mes,  anio,  iva,  isr,  seImporto,  estatus);
         }
     }
 }

@@ -47,6 +47,10 @@
             "DocumentFormat.OpenXml": {
               "target": "Package",
               "version": "[2.14.0, )"
+            },
+            "Drapper": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             }
           },
           "imports": [

@@ -49,44 +49,62 @@ namespace Importar_Impuestos.Controllers
             foreach (var impuestoRegistro in obre)
             {
                 erroresEstatus = string.Empty;
-                if (!exprerfc.IsMatch(impuestoRegistro.RFC)){
-                    impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC,impuestoRegistro.Fecha,impuestoRegistro.Mes,impuestoRegistro.Año, impuestoRegistro.IVA,impuestoRegistro.ISR,false,"Formato no valido (RFC)"));
-                }
-                else
-                {
-                    if (!existeRfc)
-                    {
-                        impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, impuestoRegistro.Fecha, impuestoRegistro.Mes, impuestoRegistro.Año, impuestoRegistro.IVA, impuestoRegistro.ISR, false, "RFC no encontrado"));
-                        
-                    }
-                    else
-                    {
-                        if (impuestoRegistro.Mes.Equals("") || impuestoRegistro.Año.Equals("") || impuestoRegistro.IVA.Equals("") || impuestoRegistro.ISR.Equals(""))
-                            erroresEstatus = "Formato no valido (Hay campos vacios en este registro) - ";
-                           
-                        if (!impuestoRegistro.Fecha.Equals(""))
-                        {
-                            if (!DateTime.TryParseExact(impuestoRegistro.Fecha, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))                            
-                                erroresEstatus += "Formato no valido (La fecha no viene con el formato correcto) - ";
-                             
-                            else
-                                erroresEstatus += fecha < DateTime.Now.AddMonths(-6) ? "Fecha no valida - " : "";
-                        }
 
-                        if (erroresEstatus.Equals(""))
+                if(!impuestoRegistro.Mes.Equals("") || !impuestoRegistro.Anio.Equals("") || !impuestoRegistro.IVA.Equals("") || !impuestoRegistro.ISR.Equals("") || !impuestoRegistro.RFC.Equals("") || !impuestoRegistro.Fecha.Equals(""))
+                {
+                    if (Regex.IsMatch(impuestoRegistro.Fecha, @"^[0-9]+$"))
+                    {
+                        var fechaCorrecta = DateTime.FromOADate(Int32.Parse(impuestoRegistro.Fecha)).ToString("dd/MM/yyyy");
+                        if (!exprerfc.IsMatch(impuestoRegistro.RFC))
                         {
-                            impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, impuestoRegistro.Fecha, impuestoRegistro.Mes, impuestoRegistro.Año, impuestoRegistro.IVA, impuestoRegistro.ISR, true, "Importado correctamente"));
+                            impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, fechaCorrecta, impuestoRegistro.Mes, impuestoRegistro.Anio, impuestoRegistro.IVA, impuestoRegistro.ISR, false, "Formato no valido (RFC)"));
                         }
                         else
                         {
-                            impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, impuestoRegistro.Fecha, impuestoRegistro.Mes, impuestoRegistro.Año, impuestoRegistro.IVA, impuestoRegistro.ISR, false, erroresEstatus.Trim().Trim('-').Trim()));
+                            if (!existeRfc)
+                            {
+                                impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, fechaCorrecta, impuestoRegistro.Mes, impuestoRegistro.Anio, impuestoRegistro.IVA, impuestoRegistro.ISR, false, "RFC no encontrado"));
+
+                            }
+                            else
+                            {
+                                if (impuestoRegistro.Mes.Equals("") || impuestoRegistro.Anio.Equals("") || impuestoRegistro.IVA.Equals("") || impuestoRegistro.ISR.Equals(""))
+                                    erroresEstatus = "Formato no valido (Hay campos vacios en este registro) - ";
+
+                                if (!impuestoRegistro.Fecha.Equals(""))
+                                {
+                                    if (!DateTime.TryParseExact(DateTime.FromOADate(Int32.Parse(impuestoRegistro.Fecha)).ToString("dd/MM/yyyy"), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))
+                                        erroresEstatus += "Formato no valido (La fecha no viene con el formato correcto) - ";
+
+                                    else
+                                        erroresEstatus += fecha < DateTime.Now.AddMonths(-6) ? "Fecha no valida - " : "";
+                                }
+
+                                if (erroresEstatus.Equals(""))
+                                {
+                                    impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, fechaCorrecta, impuestoRegistro.Mes, impuestoRegistro.Anio, impuestoRegistro.IVA, impuestoRegistro.ISR, true, "Importado correctamente"));
+                                }
+                                else
+                                {
+                                    impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, fechaCorrecta, impuestoRegistro.Mes, impuestoRegistro.Anio, impuestoRegistro.IVA, impuestoRegistro.ISR, false, erroresEstatus.Trim().Trim('-').Trim()));
+
+                                }
+
+                            }
+
 
                         }
+                    }
+                    else
+                    {
+                        impuestosRespuesta.Add(DtoRespuestaImpuestos.Create(impuestoRegistro.RFC, impuestoRegistro.Fecha, impuestoRegistro.Mes, impuestoRegistro.Anio, impuestoRegistro.IVA, impuestoRegistro.ISR, false, "Formato no valido (La fecha no viene con el formato correcto)"));
 
                     }
-                    
-                                      
                 }
+               
+
+
+
             }
 
 
@@ -103,13 +121,13 @@ namespace Importar_Impuestos.Controllers
                 int i = 0;
                 foreach (var regError in impuestosRespuesta.Where(x => x.seImporto == false).ToList())
                 {
-                    nuemvo[i, 0] = regError.RFC;
+                    nuemvo[i, 0] = regError.RFC.ToString();
                     nuemvo[i, 1] = regError.Fecha;
-                    nuemvo[i, 2] = regError.Mes;
-                    nuemvo[i, 3] = regError.Año;
-                    nuemvo[i, 4] = regError.Iva;
-                    nuemvo[i, 5] = regError.Isr;
-                    nuemvo[i, 6] = regError.Estatus;
+                    nuemvo[i, 2] = regError.Mes.ToString();
+                    nuemvo[i, 3] = regError.Anio.ToString();
+                    nuemvo[i, 4] = regError.Iva.ToString();
+                    nuemvo[i, 5] = regError.Isr.ToString();
+                    nuemvo[i, 6] = regError.Estatus.ToString();
                     i += 1;
                 }
 
@@ -125,6 +143,7 @@ namespace Importar_Impuestos.Controllers
 
             DtoRespuestaImportarImpuestosMes resp = DtoRespuestaImportarImpuestosMes.Create(impuestosRespuesta,existenRegErrores,inputAsString);
             //return Json(inputAsString);
+            new InsertDraper().Insert(impuestosRespuesta.Where(x => x.seImporto== true));
             return Json(resp);
         }
 

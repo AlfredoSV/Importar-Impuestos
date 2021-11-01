@@ -21,3 +21,11 @@ C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcore
 C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.dll
 C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.pdb
 C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\obj\Debug\netcoreapp3.1\Importar Impuestos.genruntimeconfig.cache
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Dapper.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Drapper.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Drapper.Validation.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\sni.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\sni.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Data.SqlClient.dll
+C:\Users\Alfredo\Desktop\Importar Impuestos\Importar Impuestos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Data.SqlClient.dll

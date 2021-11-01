@@ -117,29 +117,29 @@ namespace Importar_Impuestos.Servicios
             return conjuntoCatalogo;
         }
 
-        public void OnMapearValoresAImpuestos(DtoImpuesto cargaCatalogo, string valor, int indice, List<string> nombresColumnas)
+        public void OnMapearValoresAImpuestos(DtoImpuesto impuesto, string valor, int indice, List<string> nombresColumnas)
         {
             //cargaCatalogo = new DtoImpuesto();
             if (indice < nombresColumnas.Count)
                 switch (nombresColumnas[indice])
                 {
                     case "RFC":
-                        cargaCatalogo.RFC = valor.Replace("\t", string.Empty);
+                        impuesto.RFC = Regex.Replace(valor.ToString(), @"[^\w\.@-]", string.Empty);
                         break;
                     case "Fecha":
-                        cargaCatalogo.Fecha = DateTime.FromOADate(Int32.Parse(valor)).ToString("dd/MM/yyyy");
+                        impuesto.Fecha = valor.ToString();//DateTime.FromOADate(Int32.Parse(valor)).ToString("dd/MM/yyyy");//.ToString("MM/dd/yyyy");
                         break;
                     case "Mes":
-                        cargaCatalogo.Mes = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
+                        impuesto.Mes = Regex.Replace(valor.ToString(), @"[^\w\.@-]", string.Empty);
                         break;
                     case "Año":
-                        cargaCatalogo.Año = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
+                        impuesto.Anio = Regex.Replace(valor.ToString(), @"[^\w\.@-]", string.Empty);
                         break;
                     case "IVA":
-                        cargaCatalogo.IVA = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
+                        impuesto.IVA = Regex.Replace(valor.ToString(), @"[^\w\.@-]", string.Empty);
                         break;
                     case "ISR":
-                        cargaCatalogo.ISR = Regex.Replace(valor, @"[^\w\.@-]", string.Empty);
+                        impuesto.ISR = Regex.Replace(valor.ToString(), @"[^\w\.@-]", string.Empty);
                         break;
                     default:
                         break;
@@ -275,7 +275,7 @@ namespace Importar_Impuestos.Servicios
                 for (uint i = 0; i < NombreHeaders.Length; i++)
                     tableColumns1.Append(new TableColumn() { Id = i + 1, Name = NombreHeaders[i] });
 
-                TableStyleInfo tsi = new TableStyleInfo() { Name = "None"/*"TableStyleLight9"*/, ShowColumnStripes = BooleanValue.FromBoolean(false), ShowRowStripes = BooleanValue.FromBoolean(true), ShowFirstColumn = BooleanValue.FromBoolean(false), ShowLastColumn = BooleanValue.FromBoolean(false) };
+                TableStyleInfo tsi = new TableStyleInfo() { Name = "TableStyleLight9", ShowColumnStripes = BooleanValue.FromBoolean(false), ShowRowStripes = BooleanValue.FromBoolean(true), ShowFirstColumn = BooleanValue.FromBoolean(false), ShowLastColumn = BooleanValue.FromBoolean(false) };
                 table1.Append(tableColumns1);
                 table1.Append(tsi);
 
